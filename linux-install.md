@@ -15,7 +15,12 @@ set -o vi
 ```shell
 curl https://install.meteor.com/ | sh
 ```
-
+* VS Code (apt package planned for Jan 17)
+Download from https://code.visualstudio.com/Download then:
+```shell
+sudo dpkg -i <file>.deb
+sudo apt-get install -f
+```
 #### Install from special repositories:
 * Grub Customizer, if grub menu needs some fixing following the new install:
 ```shell
@@ -45,6 +50,8 @@ sudo apt-get install -y nodejs
 #### Install apt packages:
 ```shell
 sudo apt-get update 
-sudo apt-get install \
+sudo apt-get install -y \
 git \
+spotify-client \
+
 
