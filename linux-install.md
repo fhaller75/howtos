@@ -1,12 +1,20 @@
 Linux new system config procedure
 =================================
-###### As used for Linux Mint 18.1 install 22/01/2017
+###### As used for Linux Mint 18.1 install - 22/01/2017
 
 Configure system Update Manager, install packages updates.
 Firefox should be installed by default. Sync and change search engine.
 
+Add to .bashrc :
+```
+# Fred Setup
+set -o vi
+```
 #### Install manually from the web:
 * Meteor
+```shell
+curl https://install.meteor.com/ | sh
+```
 
 #### Install from special repositories:
 * Grub Customizer, if grub menu needs some fixing following the new install:
@@ -22,9 +30,21 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 sudo apt-get update 
 sudo apt-get install google-chrome-stable
 ```
-
-#### Install apt packages:
+* Dropbox (for Ubuntu 16.04):
+```shell
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" >> /etc/apt/sources.list.d/dropbox.list'
+sudo apt-get update 
+sudo apt-get install dropbox python-gpgme
 ```
+* Node v6.x (incl. npm)
+```shell
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+#### Install apt packages:
+```shell
 sudo apt-get update 
 sudo apt-get install \
 git \
+
