@@ -9,6 +9,12 @@ Firefox should be installed by default. Sync and change search engine.
 * Meteor
 
 #### Install from special repositories:
+* Grub Customizer, if grub menu needs some fixing following the new install:
+```shell
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt-get update
+sudo apt-get install grub-customizer
+```
 * Google Chrome:
 ```shell
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -19,4 +25,6 @@ sudo apt-get install google-chrome-stable
 
 #### Install apt packages:
 ```
-git
+sudo apt-get update 
+sudo apt-get install \
+git \
