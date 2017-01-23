@@ -72,5 +72,6 @@ sudo apt-get update
 sudo apt-get install -y \
 git \
 spotify-client \
+keepass2 \
 
 
