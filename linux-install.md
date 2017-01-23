@@ -1,22 +1,41 @@
-Linux new system config procedure
-=================================
+Linux new system config
+=======================
 ###### As used for Linux Mint 18.1 install - 22/01/2017
-
-Configure system Update Manager, install packages updates.
-Firefox should be installed by default. Sync and change search engine.
-
-Add to .bashrc :
+---
+#### Initial system config
+* Configure system Update Manager, install packages updates.
+* Firefox should be installed by default. Sync and change search engine.
+* Add to .bashrc :
 ```
 # Fred Setup
 set -o vi
+export EDITOR=vi
 ```
+* Automount Windows partitions at boot (required to link to Dropbox folder, for instance):
+```shell
+# Create mount points:
+sudo mkdir -p /mnt/Data /mnt/Backup
+# Chech UUID identifiers:
+sudo blkid
+# Edit fstab
+sudo cp -p /etc/fstab /etc/fstab.orig
+sudo vi /etc/fstab
+```
+Add lines similar to the below for NTFS partitions, using above found UUIDs:
+```
+# Data NTFS - added by fred
+UUID=F470354A703514B8  /mnt/Data       ntfs-3g defaults,windows_names,dmask=000,fmask=111 0       0
+# Backup NTFS - added by fred
+UUID=5CE025B5E0259674  /mnt/Backup     ntfs-3g defaults,windows_names,dmask=000,fmask=111 0       0
+```
+Reboot
 #### Install manually from the web:
 * Meteor
 ```shell
 curl https://install.meteor.com/ | sh
 ```
-* VS Code (apt package planned for Jan 17)
-Download from https://code.visualstudio.com/Download then:
+* VS Code (apt package planned for Jan '17)
+Download deb file from https://code.visualstudio.com/Download then:
 ```shell
 sudo dpkg -i <file>.deb
 sudo apt-get install -f
