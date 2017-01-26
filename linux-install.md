@@ -2,6 +2,7 @@ Linux new system config
 =======================
 ###### As used for Linux Mint 18.1 install - 22/01/2017
 ---
+
 #### Initial system config
 * Configure system Update Manager, install packages updates.
 * Firefox should be installed by default. Sync and change search engine.
@@ -29,6 +30,22 @@ UUID=F470354A703514B8  /mnt/Data       ntfs-3g defaults,windows_names,dmask=000,
 UUID=5CE025B5E0259674  /mnt/Backup     ntfs-3g defaults,windows_names,dmask=000,fmask=111 0       0
 ```
 Reboot
+* Increase max file watchers for meteor & dropbox
+```shell
+sudo vi /etc/sysctl.conf
+```
+Add at the end:
+```
+###################################################################
+# FHA - Setting for meteor file watcher
+# See: https://github.com/meteor/docs/blob/version-NEXT/long-form/file-change-watcher-efficiency.md
+fs.inotify.max_user_watches=524288
+```
+Then restart systemd
+```shell
+sudo sysctl -p
+```
+
 #### Install manually from the web:
 * Meteor
 ```shell
@@ -73,5 +90,7 @@ sudo apt-get install -y \
 git \
 spotify-client \
 keepass2 \
+hplip-gui \
+
 
 
