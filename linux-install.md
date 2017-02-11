@@ -91,6 +91,16 @@ git \
 spotify-client \
 keepass2 \
 hplip-gui \
-
-
-
+```
+#### Software configuration:
+* Git:
+Edit $HOME/.gitconfig:
+```
+[user]
+	email = fhaller75@gmail.com
+	name = Frédéric Haller
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=7200
+```
