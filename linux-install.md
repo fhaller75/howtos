@@ -88,6 +88,7 @@ sudo apt-get install -y nodejs
 sudo apt-get update 
 sudo apt-get install -y \
 git \
+g++ \
 spotify-client \
 keepass2 \
 hplip-gui \
