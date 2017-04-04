@@ -19,9 +19,16 @@ Usage:
 # git slog -3
 71ee5ec - 2015-11-18 : Scheduler jobs purge: improved logging
 ```
-#### Change colors if not readable on a light term background:
+#### Change colors if not readable:
+Green on a light term background:
 ```
 git config --global color.diff.new 'green bold'
 git config --global color.status.updated 'green bold'
 git config --global color.branch.current 'green bold'
+```
+Red on a dark term background:
+```
+git config --global color.status.changed 'red bold'
+git config --global color.status.untracked 'red bold'
+git config --global color.diff.old 'red bold'
 ```
