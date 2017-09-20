@@ -4,14 +4,14 @@ Git setup tips
 ---
 
 #### Initial global user config:
-```
+```bash
 git config --global user.name "Frederic Haller"
 git config --global user.email "frederic@umea.lu"
 git config --global alias.slog 'log --pretty=format:"%h - %cd : %s" --date=short'
 git config --global push.default simple
 ```
 #### Define an alias for a short log format:
-```
+```bash
 git config --global alias.slog 'log --pretty=format:"%h - %cd : %s" --date=short'
 ```
 Usage:
@@ -21,13 +21,13 @@ Usage:
 ```
 #### Change colors if not readable:
 Green on a light term background:
-```
+```bash
 git config --global color.diff.new 'green bold'
 git config --global color.status.updated 'green bold'
 git config --global color.branch.current 'green bold'
 ```
 Red on a dark term background:
-```
+```bash
 git config --global color.status.changed 'red bold'
 git config --global color.status.untracked 'red bold'
 git config --global color.diff.old 'red bold'
