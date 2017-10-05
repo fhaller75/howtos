@@ -43,7 +43,7 @@ Followed by issue-number-title or appropriate name
 Hotfix branches must derive from master. They are intended for small quick foxes of Production version.
 Ex.
 ```bash
-git checkout -b hotfix/issue-2345-convbond-imp-err
+git checkout -b hotfix/issue-2345-convbond-imp-err master
 ```
 Merging feature branches should be performed with --no-ff option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.
 Ex.:
