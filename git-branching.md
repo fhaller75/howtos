@@ -4,7 +4,8 @@ Git branching guidelines:
 ---
 
 ## Features/Issues development
-`devel/` is the prefix for feature development branches.
+`devel/` 
+is the prefix for feature development branches.
 Followed by an explicit name in lower case, dash-separated.
 Should start with issue-xxxx if linked to a specific referenced issue
 Ex.:
@@ -29,8 +30,8 @@ Ex.:
 git checkout -b release/v1.2.3-global master
 ```
 Development/issues branches should be merged together into a release branch before integration/UAT tests.
-Small extra-work and hotfixes can be performed in the release branch, history rewrite/cleanup is recommended (git rebase -i)
-Merging feature branches into release branches should be performed with --no-ff option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.
+Small extra-work and hotfixes can be performed in the release branch, history rewrite/cleanup is recommended (`git rebase -i`)
+Merging feature branches into release branches should be performed with `--no-ff` option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.
 Ex.:
 ```bash
 git checkout release/v1.2.3-global
@@ -38,23 +39,25 @@ git merge --no-ff devel/global-orders
 ```
 
 ## Hotfixes
-`hotfix/` is the prefix for hotfix branches.
-Followed by issue-number-title or appropriate name
+`hotfix/`
+is the prefix for hotfix branches.
+Followed by `issue-<nb>-title-or-appropriate-name`
 Hotfix branches must derive from master. They are intended for small quick foxes of Production version.
 Ex.
 ```bash
 git checkout -b hotfix/issue-2345-convbond-imp-err master
 ```
-Merging feature branches should be performed with --no-ff option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.
+Merging feature branches should be performed with `--no-ff` option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.
 Ex.:
 ```bash
 git checkout master
 git merge --no-ff hotfix/issue-2345-convbond-imp-err
 ```
 If a release branch is currently being tested/prepared, the hotfix must be merged into it as well:
+```bash
 git checkout release/v1.2.3-global
 git merge --no-ff hotfix/issue-2345-convbond-imp-err
- 
+```
 Once merged, devel and hotfix branches should be cleaned up in order to avoid infinite growing of the branch list (safe as -d prevents deleting non-merged branches):
 ```bash
 git branch -d devel/global-orders
@@ -65,10 +68,11 @@ git push --delete origin devel/global-orders
 ```
 
 ## Production
-`master` is the current Production branch (protected: forced push blocked by gitlab)
+`master`
+is the current Production branch (protected: forced push is blocked by gitlab)
 Once validated, a release branch should be merged into master just before to deploy in Production.
-git checkout master
 ```bash
+git checkout master
 git merge --no-ff release/v1.2.3-global
 ```
 Finally, that commit on master must be tagged with the version number, easy future reference to this historical version:
