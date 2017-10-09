@@ -4,10 +4,9 @@ Git branching guidelines:
 ---
 
 ## Features/Issues development
-`devel/` 
-is the prefix for feature development branches.
-Followed by an explicit name in lower case, dash-separated.
-Should start with issue-xxxx if linked to a specific referenced issue
+`devel/`  
+is the prefix for feature development branches.  
+Followed by an explicit name in lower case, dash-separated. Should start with issue-xxxx if linked to a specific referenced issue.  
 Ex.:
 ```bash
 git checkout -b devel/global-orders master
@@ -19,23 +18,43 @@ git checkout -b devel/global-fx-new-flow release/v1.2.3-global
 ```
 
 ## Releases
-`release/`
+`release/`  
 is the prefix for release branches.
-Followed by a version number following the semantic versioning form (http://semver.org/): vMAJOR.MINOR.PATCH
+
+Followed by a version number following the semantic versioning form (http://semver.org/): vMAJOR.MINOR.PATCH  
 With: MAJOR:branking changes, MINOR:non-breaking new features, PATCH: transparent fixes
-And optionally a dash-separated title.
-Release branches must always derive from master.
+
+And optionally a dash-separated title.  
+Release branches must always derive from master.  
 Ex.:
 ```bash
 git checkout -b release/v1.2.3-global master
 ```
-Development/issues branches should be merged together into a release branch before integration/UAT tests.
-Small extra-work and hotfixes can be performed in the release branch, history rewrite/cleanup is recommended (`git rebase -i`)
-Merging feature branches into release branches should be performed with `--no-ff` option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.
+Development/issues branches should be merged together into a release branch before integration/UAT tests.  
+Small extra-work and hotfixes can be performed in the release branch, history rewrite/cleanup is recommended (`git rebase -i`).  
+Merging feature branches into release branches should be performed with `--no-ff` option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.  
 Ex.:
 ```bash
 git checkout release/v1.2.3-global
 git merge --no-ff devel/global-orders
+```
+
+## Integrated Testing
+`testing/`  
+is the prefix for integrated testing branches. 
+Followed by an explicit name in lower case, dash-separated.  
+Testing branches must always derive from master.  
+Ex.: 
+```bash
+git checkout -b testing/global-with-fx-and-issue-1234 master
+```
+The purpose of such branch is to allow the testing of several unrelated developments in the same environment, in the case when they will not be released together in the same release branch.  
+Fixes and enhancement should not be performed in the testing branch, but always into the corresponding devel branch, and then merged back into the testing branch for the integrated tests.  
+Merging devel branches into a testing branch should be performed with --no-ff option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.  
+Ex.:
+```bash
+git checkout release/global-with-fx-and-issue-1234
+git merge --no-ff devel/issue-1234-fx-rejected
 ```
 
 ## Hotfixes
@@ -69,7 +88,7 @@ git push --delete origin devel/global-orders
 
 ## Production
 `master`
-is the current Production branch (protected: forced push is blocked by gitlab)
+is the current Production branch (protected: forced push is blocked by gitlab).
 Once validated, a release branch should be merged into master just before to deploy in Production.
 ```bash
 git checkout master
