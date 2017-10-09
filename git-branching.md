@@ -58,15 +58,15 @@ git merge --no-ff devel/issue-1234-fx-rejected
 ```
 
 ## Hotfixes
-`hotfix/`
-is the prefix for hotfix branches.
-Followed by `issue-<nb>-title-or-appropriate-name`
-Hotfix branches must derive from master. They are intended for small quick foxes of Production version.
+`hotfix/`  
+is the prefix for hotfix branches.  
+Followed by `issue-<nb>-title-or-appropriate-name`  
+Hotfix branches must derive from master. They are intended for small quick foxes of Production version.  
 Ex.
 ```bash
 git checkout -b hotfix/issue-2345-convbond-imp-err master
 ```
-Merging feature branches should be performed with `--no-ff` option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.
+Merging feature branches should be performed with `--no-ff` option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.  
 Ex.:
 ```bash
 git checkout master
@@ -87,14 +87,14 @@ git push --delete origin devel/global-orders
 ```
 
 ## Production
-`master`
-is the current Production branch (protected: forced push is blocked by gitlab).
-Once validated, a release branch should be merged into master just before to deploy in Production.
+`master`  
+is the current Production branch (protected: forced push is blocked by gitlab).  
+Once validated, a release branch should be merged into master just before to deploy in Production:
 ```bash
 git checkout master
 git merge --no-ff release/v1.2.3-global
 ```
-Finally, that commit on master must be tagged with the version number, easy future reference to this historical version:
+Finally, that commit on master must be tagged with the version number, for easy future reference to this historical version:
 ```bash
 git tag -a v1.2.3-global
 ```
