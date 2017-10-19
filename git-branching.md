@@ -97,4 +97,5 @@ git merge --no-ff release/v1.2.3-global
 Finally, that commit on master must be tagged with the version number, for easy future reference to this historical version:
 ```bash
 git tag -a v1.2.3-global
+git push origin v1.2.3-global
 ```
