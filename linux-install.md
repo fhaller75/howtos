@@ -61,6 +61,17 @@ Download deb file from https://code.visualstudio.com/Download then:
 sudo dpkg -i <file>.deb
 sudo apt-get install -f
 ```
+#### Install apt packages:
+```bash
+sudo apt-get update 
+sudo apt-get install -y \
+git \
+g++ \
+spotify-client \
+keepass2 \
+hplip-gui \
+os-prober \
+```
 #### Install from special repositories:
 * Grub Customizer, if grub menu needs some fixing following the new install:
 ```bash
@@ -87,16 +98,6 @@ sudo apt-get install dropbox python-gpgme
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
-#### Install apt packages:
-```bash
-sudo apt-get update 
-sudo apt-get install -y \
-git \
-g++ \
-spotify-client \
-keepass2 \
-hplip-gui \
-```
 #### Software configuration:
 * Git:
 Edit $HOME/.gitconfig:
@@ -109,3 +110,10 @@ Edit $HOME/.gitconfig:
 [credential]
 	helper = cache --timeout=7200
 ```
+#### Multiboot:
+In case you need to reconfigure the bootloader, first mount all disks containing bootable partitions, then:
+```bash
+sudo os-prober
+sudo grub-update
+```
+And use the above installed Grub Customizer tool to rearrange the menu if necessary.
