@@ -93,6 +93,7 @@ Once validated, a release branch should be merged into master just before to dep
 ```bash
 git checkout master
 git merge --no-ff release/v1.2.3-global
+git push origin master
 ```
 Finally, that commit on master must be tagged with the version number, for easy future reference to this historical version:
 ```bash
