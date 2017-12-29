@@ -93,9 +93,9 @@ sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" >> /etc/apt/
 sudo apt-get update 
 sudo apt-get install dropbox python-gpgme
 ```
-* Node v6.x (incl. npm)
+* Node v8.x (incl. npm)
 ```bash
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 #### Software configuration:
