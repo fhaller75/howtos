@@ -31,13 +31,15 @@ Ex.:
 git checkout -b release/v1.2.3-global master
 ```
 Development/issues branches should be merged together into a release branch before integration/UAT tests.  
-Small extra-work and hotfixes can be performed in the release branch, history rewrite/cleanup is recommended (`git rebase -i`).  
 Merging feature branches into release branches should be performed with `--no-ff` option in order to always create a merge commit, which allows easily reverting if necessary, and makes merging history traceable.  
 Ex.:
 ```bash
 git checkout release/v1.2.3-global
 git merge --no-ff devel/global-orders
 ```
+After the merge, a rewrite/cleanup of the commits history is recommended before to push to origin, in order to eliminate small intermediate development commits (use `git rebase -i`, see git doc).
+Small extra-work and fixes can be performed and committed directly in the release branch during the tests.
+
 
 ## Integrated Testing
 `testing/`  
@@ -99,4 +101,14 @@ Finally, that commit on master must be tagged with the version number, for easy 
 ```bash
 git tag -a v1.2.3-global
 git push origin v1.2.3-global
+```
+Once merged, release/devel/hotfix branches should be cleaned up in order to avoid infinite growing of the branch list. A project Master can do it through Gitlab console in the project's Repository > Branches menu, using the "Delete merged branches" button.
+Alternatively, using git commands:
+Delete locally first (safe as -d prevents deleting non-merged branches). Ex.:
+```bash
+git branch -d devel/global-orders
+```
+And then the remote branch. Ex.:
+```bash
+git push --delete origin devel/global-orders
 ```
