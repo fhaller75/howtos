@@ -21,6 +21,7 @@ Then restart systemd
 sudo sysctl -p
 ```
 
+### Gitlab server parameters
 * reduce gitlab unicorn workers: 
 ```bash
 sudo vi /etc/gitlab/gitlab.rb
@@ -29,7 +30,7 @@ Change worker processes:
 ```bash
 unicorn['worker processes'] = 3
 ```
-The default at install is 5. We found it to be too much for 4GB RAM. The minimum is 2. 
+The default at install is 5. We found it to be too much for 4GB RAM. The minimum is 2.  
 Then reconfigure:
 ```bash
 sudo gitlab-ctl reconfigure
