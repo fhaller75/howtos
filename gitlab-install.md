@@ -4,7 +4,7 @@ Gitlab install and setup tips
 ---
 
 ### Linux system parameters tuning
-To minimize swap usage on a 4GB RAM host:
+To minimize swap usage on a 4GB RAM host: 
 * virtual memory parameters:
 ```bash
 sudo vi /etc/sysctl.conf
@@ -19,4 +19,18 @@ vm.dirty_background_ratio = 5
 Then restart systemd
 ```bash
 sudo sysctl -p
+```
+
+* reduce gitlab unicorn workers: 
+```bash
+sudo vi /etc/gitlab/gitlab.rb
+```
+Change worker processes:
+```bash
+unicorn['worker processes'] = 3
+```
+The default at install is 5. We found it to be too much for 4GB RAM. The minimum is 2. 
+Then reconfigure:
+```bash
+sudo gitlab-ctl reconfigure
 ```
