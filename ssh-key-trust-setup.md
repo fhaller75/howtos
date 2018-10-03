@@ -15,8 +15,13 @@ On target host:
 ```bash
 cat id_rsa.pub >> .ssh/authorized_keys
 rm id_rsa.pub
-chmod 600 .ssh/authorized_keys
 ```
 
-Connect one time with password.
+Permissions requirements:
+```bash
+chmod 0700 $HOME
+chmod 0700 $HOME/.ssh
+chmod 0600 $HOME/.ssh/authorized_keys
+```
+
 Should then work password-less. Use ssh -v if any issue.
