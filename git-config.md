@@ -19,6 +19,10 @@ Usage:
 # git slog -3
 71ee5ec - 2015-11-18 : Scheduler jobs purge: improved logging
 ```
+#### Define an alias to show a commit graph with colored refs:
+```bash
+git config --global alias.graph 'log --pretty=format:"%C(auto)%h - %cd%d : %s" --date=short --graph'
+```
 #### Change colors if not readable:
 Green on a light term background:
 ```bash
