@@ -4,7 +4,7 @@ SSH trusted key authentication setup
 ---
 On source host:
 ```bash
-ssh-keygen -t rsa -C "$USER@$(hostname)" -b 4096
+ssh-keygen -t rsa -C "$(whoami)@$(hostname)" -b 4096
 ```
 -> no passphrase
 ```bash
