@@ -23,6 +23,10 @@ Usage:
 ```bash
 git config --global alias.graph 'log --pretty=format:"%C(auto)%h - %cd%d : %s" --date=short --graph'
 ```
+#### Activate colors if not done by default
+```bash
+git config --global color.ui auto
+```
 #### Change colors if not readable:
 Green on a light term background:
 ```bash
