@@ -7,11 +7,12 @@ On source host:
 ssh-keygen -t rsa -C "$(whoami)@$(hostname)" -b 4096
 ```
 -> no passphrase
+
+Copy public key to target (Alt.: Use `ssh-copy-id -i`, to test & document):
 ```bash
 scp ~/.ssh/id_rsa.pub <target_user>@<target_host>:~
 ```
-
-On target host:
+Then authorize on target host:
 ```bash
 cat id_rsa.pub >> .ssh/authorized_keys
 rm id_rsa.pub
